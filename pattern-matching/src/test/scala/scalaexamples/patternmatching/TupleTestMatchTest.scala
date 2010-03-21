@@ -8,19 +8,19 @@ import scalaexamples.EmptyTest
 
 @RunWith(classOf[JUnit4])
 class TupleTestMatchTest extends EmptyTest {
-  
+
   // @Test
-  def matchOnTupes {
+  def matchOnTuples {
     val simpleTuple: Any = (1, "string")
 
     simpleTuple match {
-      // Match on the tuple, and assert that its the same => assertEquals(simpleTuple, (one, two))
+    // Match on the tuple, and assert that its the same => assertEquals(simpleTuple, (one, two))
       case _ => error("Couldnt match it")
     }
   }
-  
+
   // @Test
-  def matchOnTupesWithGuard {
+  def matchOnTuplesWithGuard {
     val simpleTuple: Any = (1, "string")
 
     simpleTuple match {
@@ -32,11 +32,11 @@ class TupleTestMatchTest extends EmptyTest {
   }
 
   // @Test
-  def matchOnLargerTuple{
+  def matchOnLargerTuple {
     val simpleTuple: Any = (1, "string", false)
-    
+
     simpleTuple match {
-      // Match on the tuple, and assert with assertFalse(three)
+    // Match on the tuple, and assert with assertFalse(three)
       case (one, two, three: String) => error("this is not a Tuple3 with last element Boolean")
       case _ => error("Couldnt match it")
     }
