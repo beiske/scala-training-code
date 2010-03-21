@@ -10,7 +10,7 @@ class Stuff {
   
   // Define a method saying "Hello " to whatever input
   
-  // Deine a method which prints hello, returning Unit (void)
+  // Define a method which prints hello, returning Unit (void)
 
 }
 
