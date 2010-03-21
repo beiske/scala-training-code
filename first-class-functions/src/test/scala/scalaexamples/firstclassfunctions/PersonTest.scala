@@ -40,7 +40,7 @@ class PersonTest extends EmptyTest {
   // @Test
   def testNamesOfAdults {
     // Create a list containing the names of the adults,
-    // by combining the approaches in the two exercies above
+    // by combining the approaches in the two exercises above
     val names = Nil
 
     assertEquals(List("Alf", "Fredrik"), names)
@@ -108,7 +108,7 @@ class PersonTest extends EmptyTest {
   def testFindPersonByEmail {
     // Find the person who has the e-mail address "fvr@knowit.no".
     
-    // Hint: Try combinining finding the person and checking if
+    // Hint: Try combining finding the person and checking if
     // there exists an email address matching the criteria in the
     // person's list of email addresses.
     val address = EmailAddress("fredrik@vraalsen.no")
@@ -133,9 +133,34 @@ class PersonTest extends EmptyTest {
     assertEquals(List(alf.emailAddresses.head, fredrik.emailAddresses.head), addresses)
   }
 
+  //@Test
+  def testSumOfAge {
+    // Calculate the sum of the age of all the persons using foldLeft
+
+    // Insert code here for sumFunction, a function of two variables, the sum and the current value
+    val sumFunction = null
+    var sumOfAges = persons.foldLeft(0)( sumFunction )
+
+    assertEquals(63, sumOfAges)
+
+  }
+
+  //@Test
+  def testNameToAge{
+    //Create a map from each person's age to his name. Add entries to the map using foldLeft
+    
+    // Insert code here for emptyMap
+   var emptyMap:Map[Int,String] = Map()
+   val nameToAge: Map[Int, String] = null
+
+   assertEquals(Map(30 -> "Alf", 33 -> "Fredrik", 0 -> "Johannes"), nameToAge)
+  }
+
   // @Test
   def testNameToEmailAddress {
-    // Create a map from each persons name to their e-mail addresses,
+    // Note that this is a difficult task for Scala beginners
+    
+    // Create a map from each person's name to their e-mail addresses,
     // filtering out persons without e-mail addresses
     // Hint: First filter list, then use foldLeft to accumulate...
     val emptyMap: Map[String, List[EmailAddress]] = Map()
