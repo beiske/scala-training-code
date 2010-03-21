@@ -13,7 +13,7 @@ class CompanionObjectTest extends EmptyTest{
     // Comment in expression by expression and make them compile and run
     // Hint: You do this by changing the Train.scala definition. More hints in the source file.
     
-    // val trainOne = Train(Array("Espen"))
+    // val trainOne = Train(List("Espen"))
     // assertEquals(List("Espen"), trainOne.passengers)
     // assertTrue(trainOne.conductor.isEmpty)
     
