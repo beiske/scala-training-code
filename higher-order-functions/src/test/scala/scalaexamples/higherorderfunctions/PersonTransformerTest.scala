@@ -28,14 +28,14 @@ class PersonTransformerTest extends EmptyTest {
   @Test
   def testName {
     // Pass in a function transforming the list to the names of the persons
-    val expected = persons.map(_.name)
+    val expected = List("Alf", "Fredrik", "Johannes")
     assertEquals(expected, personTransformer.transformPersons(persons, (p: Person) => p.name))
   }
   
   @Test
   def testAge {
     // Pass in a function transforming the list to the ages of the persons
-    val expected = persons.map(_.age)
+    val expected = List(30, 33, 0)
     assertEquals(expected, personTransformer.transformPersons(persons, (p: Person) => p.age))
   }
   

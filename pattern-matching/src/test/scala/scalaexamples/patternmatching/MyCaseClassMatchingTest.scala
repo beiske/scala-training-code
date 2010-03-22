@@ -9,7 +9,8 @@ import scalaexamples.EmptyTest
 @RunWith(classOf[JUnit4])
 class MyCaseClassMatchingTest extends EmptyTest {
   
-  @Test def matchMySuperType {
+  @Test 
+  def matchMySuperType {
      val theClass: Any = FirstSubClass(1)
      
      val found = theClass match {
@@ -20,42 +21,43 @@ class MyCaseClassMatchingTest extends EmptyTest {
      assertTrue(found)
   }
   
-  @Test def matchSubType {
+  @Test 
+  def matchSubType {
      
-     def mathSubType(myType: MyCaseClass) = myType match {
+     def matchSubType(myType: MyCaseClass) = myType match {
        // Add match expressions which make the following code pass.
        case FirstSubClass(value) => value
        case SecondSubClass(one) => one
        case ThirdSubClass(_, elements) => elements
        case FourthSubClass(value, FirstSubClass(element)) => element
+       case _ => error("Should never reach this")
      }
 
+     // You should not change the following code at all. Only add matches which will make the tests match.
      var theClass: MyCaseClass = FirstSubClass(10)
-     var foundElement = mathSubType(theClass)
+     var foundElement = matchSubType(theClass)
      assertEquals(10, foundElement)
      
      theClass = SecondSubClass("verdi")
-     foundElement = mathSubType(theClass)
+     foundElement = matchSubType(theClass)
      assertEquals("verdi", foundElement)
      
      theClass = ThirdSubClass("verdi", List(1, 2))
-     foundElement = mathSubType(theClass)
+     foundElement = matchSubType(theClass)
      assertEquals(List(1, 2), foundElement)
      
      theClass = FourthSubClass("verdi", FirstSubClass(11))
-     foundElement = mathSubType(theClass)
+     foundElement = matchSubType(theClass)
      assertEquals(11, foundElement)
   }
   
-  @Test def matchWithExplicitType {
+  @Test 
+  def matchWithExplicitType {
      val theClass: MyCaseClass = FourthSubClass("verdi", FirstSubClass(11))
 
      val foundElement: Option[FirstSubClass] = theClass match {
        // Add a match expression which make the following assertion true. Use Option type
-       case FirstSubClass(value) => None
-       case SecondSubClass(one) => None
-       case ThirdSubClass(_, elements) => None
-       case FourthSubClass(value, element) => Some(element)
+       case FourthSubClass(_, element) => Some(element)
        case _ => None
      }
      

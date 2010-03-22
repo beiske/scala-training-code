@@ -11,11 +11,12 @@ class ListMatchingTest extends EmptyTest  {
 
   val list = List("Scala", "is", "powerful")
   
-  @Test def matchFirstElementOfList {
+  @Test
+  def matchFirstElementOfList {
     
     // matchedElement must find the first element. It can also skip the rest (if you want to)
     val mathedElement = list match {
-      //case List(firstElement, lastElement) => firstElement
+      // Insert you match statement(s) here
       case List(firstElement, _ *) => firstElement
       case _ => "failed"
     }
@@ -23,13 +24,13 @@ class ListMatchingTest extends EmptyTest  {
     assertEquals(list(0), mathedElement)
   }
   
-  @Test def matchSecondElementOfList {
+  @Test 
+  def matchSecondElementOfList {
     
-    // matchedElement should fint the second element of the list. 
+    // matchedElement should find the second element of the list. 
     // You may ignore the first element and any subsequent elements if you want
     val mathedElement = list match {
-      //case List(firstElement, middle, lastElement) => middle
-      //case List(_, middle, _) => middle
+      // Insert you match statement here
       case List(_, middle, _ *) => middle
       case _ => "failed"
     }
@@ -38,7 +39,8 @@ class ListMatchingTest extends EmptyTest  {
   }
 
   
-  @Test def matchNestedLists {
+  @Test 
+  def matchNestedLists {
 	val nestedList = list :: List("Indeed", "it", "is")
 	// Same as List(List(Scala, is, powerful), Indeed, it, is) 
  
@@ -46,24 +48,27 @@ class ListMatchingTest extends EmptyTest  {
 	// Which prepends the entire list.
                                                                    
 	// You must find the sublist to make the test pass.
-    val mathedElement = nestedList match {
-      case List(sublist, _ *) => sublist
+    val matchedElement = nestedList match {
+      // Insert your match statement here
+      case List(sublist:List[String], _*) => sublist
       case _ => "failed"
     }
 
-    assertEquals(list, mathedElement)
+    assertEquals(list, matchedElement)
   }
   
-  @Test def matchNestedElementOfList {
+  @Test 
+  def matchNestedElementOfList {
     val subList = List("Indeed", "it", "is")
 	val list = List("Scala", "is", "powerful", subList)
  
 	// Here you must find the first element of the second sublist
-    val mathedElement = list match {
+    val matchedElement = list match {
+      // Insert you match statement here
       case List(_, _, _, List(matched, _ *)) => matched
       case _ => "failed"
     }
-    assertEquals(subList(0), mathedElement)
+    assertEquals(subList(0), matchedElement)
   }
   
   

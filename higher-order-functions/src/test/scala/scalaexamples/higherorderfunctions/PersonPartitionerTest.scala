@@ -32,10 +32,7 @@ class PersonPartitionerTest extends EmptyTest {
   def testHasMoreThanOneEmail {
     // Pass in a function that tests whether the person is
     // a techie (2 or more e-mail addresses) or a luddite (zero or one e-mail address)
-    val (techies, luddites) = partitioner.partitionPersons(persons, (p: Person) => p.emailAddresses match {
-      case List(_, _, _*) => true
-      case _ => false
-    })
+    val (techies, luddites) = partitioner.partitionPersons(persons, (p:Person) => p.emailAddresses.size >= 2)
 
     assertEquals(List(fredrik), techies)
     assertEquals(List(alf, johannes), luddites)
