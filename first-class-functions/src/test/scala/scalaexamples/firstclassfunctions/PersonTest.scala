@@ -149,7 +149,7 @@ class PersonTest extends EmptyTest {
   def testNameToAge{
     //Create a map from each person's age to his name. Add entries to the map using foldLeft
     
-    // Insert code here for emptyMap
+    // Insert code here for nameToAge
    var emptyMap:Map[Int,String] = Map()
    val nameToAge: Map[Int, String] = null
 
