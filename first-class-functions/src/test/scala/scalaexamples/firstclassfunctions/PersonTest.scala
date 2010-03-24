@@ -40,7 +40,7 @@ class PersonTest extends EmptyTest {
   @Test
   def testNamesOfAdults {
     // Create a list containing the names of the adults,
-    // by combining the approaches in the two exercies above
+    // by combining the approaches in the two exercises above
     val names = persons.filter( (p:Person) => p.age >= 18 ).map( (p:Person) => p.name)
 
     assertEquals(List("Alf", "Fredrik"), names)
@@ -109,11 +109,10 @@ class PersonTest extends EmptyTest {
   def testFindPersonByEmail {
     // Find the person who has the e-mail address "fredrik@vraalsen.no".
     
-    // Hint: Try combinining finding the person and checking if
+    // Hint: Try combining finding the person and checking if
     // there exists an email address matching the criteria in the
     // person's list of email addresses.
     val address = EmailAddress("fredrik@vraalsen.no")
-    
     val person: Option[Person] = persons.find( (p:Person) => p.emailAddresses.contains( address ))
     
     person match {
@@ -133,6 +132,29 @@ class PersonTest extends EmptyTest {
     val addresses = persons.filter( (p:Person) => !p.emailAddresses.isEmpty ).map( (p:Person) => p.emailAddresses.head)
 
     assertEquals(List(alf.emailAddresses.head, fredrik.emailAddresses.head), addresses)
+  }
+
+  @Test
+  def testSumOfAge {
+    // Calculate the sum of the age of all the persons using foldLeft
+
+    // Insert code here for sumFunction, a function of two variables, the sum and the current value
+    val sumFunction = (sum:Int, p:Person) => sum + p.age
+    var sumOfAges = persons.foldLeft(0)( sumFunction )
+
+    assertEquals(63, sumOfAges)
+
+  }
+
+  @Test
+  def testNameToAge{
+    //Create a map from each person's age to his name. Add entries to the map using foldLeft
+    
+    // Insert code here for nameToAge
+   var emptyMap:Map[Int,String] = Map()
+   val nameToAge: Map[Int, String] = persons.foldLeft(emptyMap)( (m:Map[Int,String], p:Person) => m ++ Map(p.age -> p.name) )
+
+   assertEquals(Map(30 -> "Alf", 33 -> "Fredrik", 0 -> "Johannes"), nameToAge)
   }
 
   
